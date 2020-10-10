@@ -1,0 +1,126 @@
+<div class="trip-card-comp">
+
+  <div class="trip-detail" [class.edited-card]="isBeingEdited" *ngIf="!isAddingTrip">
+
+    <div class="destination bold-xl" *ngIf="!isBeingEdited">
+      {{ tripDetail.destination }}
+    </div>
+
+    <div class="edit-dest padding" *ngIf="isBeingEdited">
+      <input 
+        type="text"
+        [value]="tripDetail.destination"
+        class="normal-lg edit-box" 
+        (input)="onDestinationChange($event)">
+    </div>
+
+    <div class="content normal-lg">
+
+      <div class="start-date padding" [class.white]="isBeingEdited">
+        Started On : {{tripStartTs | date : 'MMM dd, yyyy h:mm a'}}
+      </div>
+
+      <div class="duration padding" [class.white]="isBeingEdited">
+        Duration : {{ tripDetail.duration }}
+      </div>
+
+      <div class="comment padding" *ngIf="!isBeingEdited">
+        {{ tripDetail.comment }}
+      </div>
+
+      <div class="edit-dest padding" *ngIf="isBeingEdited">
+        <input 
+          type="text"
+          [value]="tripDetail.comment"
+          class="normal-lg edit-box" 
+          (input)="onCommentChange($event)">
+      </div>
+
+    </div>
+
+    <div class="button-cont padding" *ngIf="isBeingEdited">
+
+      <button class="edit" (click)="editTrip()">
+        Confirm
+      </button>
+  
+      <button class="delete" (click)="onCancel()">
+        Cancel
+      </button>
+  
+    </div>
+  
+    <div class="button-cont padding" *ngIf="!isBeingEdited">
+  
+      <div class="edit-cont" (click)="onEditClick()">
+        <i class="fa fa-edit fa-2x" aria-hidden="true"></i>
+      </div>
+  
+      <div class="delete-cont" (click)="deleteTrip()">
+        <i class="fa fa-trash-o fa-2x"></i>
+      </div>
+  
+    </div>
+
+  </div>
+
+  <div class="trip-detail" *ngIf="isAddingTrip">
+
+    <div class="form-cont" [formGroup]="tripForm">
+
+      <div class="destination padding">
+        <input matInput
+          type="text"
+          class="normal-lg edit-box" 
+          placeholder="Destination"
+          formControlName="destination">
+        <div class="error" *ngIf="this.tripForm.controls['destination'].touched && this.tripForm.controls['destination'].hasError('required')"> 
+          Please Enter the destination 
+        </div>
+      </div>
+
+      <div class="start-date padding">
+        <input matInput
+          type="text" 
+          class="normal-lg edit-box"
+          placeholder="Date (dd/mm/yyyy)"
+          formControlName="start">
+        <div class="error" *ngIf="this.tripForm.controls['start'].touched && this.tripForm.controls['start'].hasError('required')"> 
+          Please Enter the start date in dd/mm/yyyy format
+        </div>
+      </div>
+
+      <div class="duration padding">
+        <input matInput
+          type="text" 
+          class="normal-lg edit-box"
+          placeholder="Duration"
+          formControlName="duration">
+        <div class="error" *ngIf="this.tripForm.controls['duration'].touched && this.tripForm.controls['duration'].hasError('required')">
+           Please Enter the duration 
+        </div>
+      </div>
+
+        <div class="comment padding">
+          <input matInput
+            type="text" 
+            class="normal-lg edit-box"
+            placeholder="Comment"
+            formControlName="comment">
+          <div class="error" *ngIf="this.tripForm.controls['comment'].touched && this.tripForm.controls['comment'].hasError('required')"> 
+            Please Enter the comment 
+          </div>
+        </div>
+
+    </div>
+
+    <div class="submit padding">
+
+      <button class="submit-button" (click)="onCreateTrip()">
+        Submit
+      </button>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,59 @@
+.trip-list-comp {
+  height            : 100vh;
+  width             : 100vw;
+  position          : relative;
+  overflow          : hidden;
+  background-color  : #f2f5f7;
+}
+
+.toolbar {
+  background-color  : #019EFC;
+  color             : white;
+  height            : 70px;
+  display           : flex;
+  align-items       : center;
+  padding-left      : 20px;
+}
+
+.comp-cont {
+  display     : flex;
+  overflow    : hidden;
+  height      : calc(100% - 70px);
+}
+
+.loading-cont {
+  display         : flex;
+  align-items     : center;
+  justify-content : center;
+  overflow        : hidden;
+  height          : calc(100% - 70px);
+}
+
+.left-cont {
+  width         : 40%;
+  margin-right  : 4%;
+  overflow-y    : auto;
+  overflow-x    : hidden;
+}
+
+.add-button {
+  width: 6%
+}
+
+.right-cont  {
+  width         : calc(46% - 10px);
+  margin        : 10px 10px 0 4%
+}
+
+.card-cont {
+  width : 100%;
+}
+
+.add-button {
+  margin-top : 10px;
+}
+
+.add {
+  background-color: limegreen;
+  width           : 100%;
+}
