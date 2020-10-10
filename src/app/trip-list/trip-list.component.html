@@ -1,0 +1,38 @@
+<div class="trip-list-comp">
+
+  <header class="toolbar bold-xxl">
+    Trip Management
+  </header>
+
+  <div class="comp-cont" *ngIf="isApiFinshed">
+
+    <div class="left-cont">
+      <div class="card-cont" *ngFor="let detail of tripDetails">
+        <app-trip-card
+          [tripDetail]="detail"
+          (editParams)="onTripEdit($event)"
+          (deleteParams)="onTripDelete($event)"
+          (addParams)="onSubmit($event)">
+        </app-trip-card>
+      </div>
+    </div>
+
+    <div class="add-button" *ngIf="addTrip">
+      <button class="add" (click)="onCreateTrip()">
+        Add Trip
+      </button>
+    </div>
+  
+    <div class="right-cont">
+      <app-calendar
+        [calendarEvents]="calendarParams">
+      </app-calendar>
+    </div>
+
+  </div>
+
+  <div class="loading-cont bold-xl" *ngIf="!isApiFinshed">
+    ... Loading
+  </div>
+
+</div>

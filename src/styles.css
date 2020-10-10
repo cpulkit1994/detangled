@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+html, body{
+  height    : 100vh;
+  width     : 100vw;
+  overflow  : hidden;
+  margin    : 0;
+} 
+
+.bold-xxl {
+  font-weight : bold;
+  font-size   : 24px;
+  font-family : "Metropolis Regular";
+}
+
+.bold-xl {
+  font-weight : bold;
+  font-size   : 22px;
+  font-family : "Metropolis Regular";
+}
+
+.normal-lg {
+  font-size   : 16px;
+  font-family : "Metropolis Regular";
+  font-weight : inherit;
+}
+
+button {
+  color         : white;
+  height        : 2rem;
+  border-radius : 10px;
+}
+
+button:hover {
+  background-color  : #f2f5f7;
+  color             : black;
+  cursor            : pointer;
+}
